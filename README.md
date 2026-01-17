@@ -35,3 +35,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 # Humble-Brag-Detector
+
+自虐風自慢を検出する（ネタ用）
+
+<img width="914" height="836" alt="スクリーンショット 2026-01-17 12 33 29" src="https://github.com/user-attachments/assets/901ac895-d4f8-4575-b7e4-4607842b1274" />
+<img width="950" height="865" alt="スクリーンショット 2026-01-17 12 29 33" src="https://github.com/user-attachments/assets/233c4d97-463c-4d76-abe2-bc75a12429ca" />
+<img width="1012" height="898" alt="スクリーンショット 2026-01-17 12 28 42" src="https://github.com/user-attachments/assets/4cd07613-69f1-4f43-a609-18dffdc9e498" />
+
+
