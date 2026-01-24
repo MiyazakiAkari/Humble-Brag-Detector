@@ -35,6 +35,12 @@ export async function POST(req: NextRequest) {
 
         try {
             const jsonResponse = JSON.parse(cleanJson);
+
+            // 50以上はGUILTY, それ未満はINNOCENTとする
+            const isGuilty = jsonResponse.bragLevel >= 50;
+            jsonResponse.isHumbleBrag = isGuilty;
+            jsonResponse.verdict = isGuilty ? "GUILTY" : "INNOCENT";
+
             return NextResponse.json(jsonResponse);
         } catch (e) {
             console.error("Failed to parse Gemini response:", textResponse);
