@@ -51,12 +51,23 @@ export async function POST(req: NextRequest) {
         }
 
     } catch (error: any) {
-        console.error("Error asking Gemini:", error);
-        if (error.response) {
-            console.error("Error details:", error.response);
+        // 開発環境のみ詳細ログを出力（本番環境ではログを制限）
+        if (process.env.NODE_ENV === "development") {
+            console.error("[GEMINI ERROR]", {
+                message: error.message,
+                status: error.status,
+                code: error.code,
+                apiKey: process.env.GEMINI_API_KEY ? "✓ Set" : "✗ NOT SET"
+            });
+        } else {
+            console.error("[GEMINI ERROR] status:", error.status, "code:", error.code);
         }
+        
         return NextResponse.json(
-            { error: "Internal Server Error" },
+            { 
+                error: "Internal Server Error",
+                details: process.env.NODE_ENV === "development" ? error.message : undefined
+            },
             { status: 500 }
         );
     }
