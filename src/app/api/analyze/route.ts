@@ -45,13 +45,18 @@ export async function POST(req: NextRequest) {
         }
 
     } catch (error: any) {
-        console.error("[GEMINI ERROR]", {
-            message: error.message,
-            status: error.status,
-            code: error.code,
-            apiKey: process.env.GEMINI_API_KEY ? "✓ Set" : "✗ NOT SET",
-            fullError: error.toString()
-        });
+        // 開発環境のみ詳細ログを出力（本番環境ではログを制限）
+        if (process.env.NODE_ENV === "development") {
+            console.error("[GEMINI ERROR]", {
+                message: error.message,
+                status: error.status,
+                code: error.code,
+                apiKey: process.env.GEMINI_API_KEY ? "✓ Set" : "✗ NOT SET"
+            });
+        } else {
+            console.error("[GEMINI ERROR] status:", error.status, "code:", error.code);
+        }
+        
         return NextResponse.json(
             { 
                 error: "Internal Server Error",
